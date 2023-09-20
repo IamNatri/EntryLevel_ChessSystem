@@ -3,6 +3,7 @@ package IamNatri.com.github.entrylevel_chessSysten.chess;
 import IamNatri.com.github.entrylevel_chessSysten.boardgame.Board;
 import IamNatri.com.github.entrylevel_chessSysten.boardgame.Position;
 import IamNatri.com.github.entrylevel_chessSysten.chess.enums.Color;
+import IamNatri.com.github.entrylevel_chessSysten.chess.pieces.King;
 import IamNatri.com.github.entrylevel_chessSysten.chess.pieces.Rook;
 
 public class ChessMatch {
@@ -25,7 +26,11 @@ public class ChessMatch {
         return mat;
     }
 
+    private void placeNewPiece(char column, int row, ChessPiece piece){
+        board.placePiece(piece, new ChessPosition(column, row).toPosition());
+    }
+
     private void initialSetup(){
-        board.placePiece(new Rook(board, Color.WHITE), new Position(2, 1));
+        placeNewPiece('e', 1, new King(board, Color.WHITE));
     }
 }
