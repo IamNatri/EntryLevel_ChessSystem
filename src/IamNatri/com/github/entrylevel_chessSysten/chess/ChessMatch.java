@@ -1,6 +1,7 @@
 package IamNatri.com.github.entrylevel_chessSysten.chess;
 
 import IamNatri.com.github.entrylevel_chessSysten.boardgame.Board;
+import IamNatri.com.github.entrylevel_chessSysten.boardgame.Piece;
 import IamNatri.com.github.entrylevel_chessSysten.boardgame.Position;
 import IamNatri.com.github.entrylevel_chessSysten.chess.enums.Color;
 import IamNatri.com.github.entrylevel_chessSysten.chess.pieces.King;
@@ -8,12 +9,10 @@ import IamNatri.com.github.entrylevel_chessSysten.chess.pieces.Rook;
 
 public class ChessMatch {
     private Board board;
-
     public ChessMatch() {
         this.board = new Board(8, 8);
         initialSetup();
     }
-
     //Promove a separação de visibilidade do sistema não permitindo o programa conhecer uma classe fora da chess
     public ChessPiece[][] getPieces() {
         ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColumns()];
@@ -21,9 +20,28 @@ public class ChessMatch {
             for(int j=0; j< board.getColumns(); j++ ){
                 mat[i][j] = (ChessPiece) board.piece(i,j);
             }
-
         }
         return mat;
+    }
+
+    public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition){
+        Position source = sourcePosition.toPosition();
+        Position target = targetPosition.toPosition();
+        validateSourcePosition(source);
+        Piece caputrePiece = makeMove(source, target);
+        return (ChessPiece) caputrePiece;
+    }
+    private Piece makeMove(Position source, Position target){
+        Piece p = board.removePiece(source);
+        Piece capturedPiece = board.removePiece(target);
+        board.placePiece(p, target);
+        return capturedPiece;
+    }
+
+    private void validateSourcePosition(Position position){
+        if(!board.thereIsAPiece(position)){
+            throw new ChessException("There is no piece on source position.");
+        }
     }
 
     private void placeNewPiece(char column, int row, ChessPiece piece) {
