@@ -1,6 +1,6 @@
-package IamNatri.com.github.entrylevel_chessSysten.chess;
+package IamNatri.com.github.entrylevel_chessSystem.chess;
 
-import IamNatri.com.github.entrylevel_chessSysten.boardgame.BoardException;
+import IamNatri.com.github.entrylevel_chessSystem.boardgame.BoardException;
 
 import java.io.Serial;
 

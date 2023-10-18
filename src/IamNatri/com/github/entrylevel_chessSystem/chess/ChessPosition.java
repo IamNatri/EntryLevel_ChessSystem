@@ -1,6 +1,6 @@
-package IamNatri.com.github.entrylevel_chessSysten.chess;
+package IamNatri.com.github.entrylevel_chessSystem.chess;
 
-import IamNatri.com.github.entrylevel_chessSysten.boardgame.Position;
+import IamNatri.com.github.entrylevel_chessSystem.boardgame.Position;
 
 public class ChessPosition {
     public char column;
@@ -26,7 +26,7 @@ public class ChessPosition {
         return new Position(8 - row, column - 'a');
     }
     protected static ChessPosition fromPosition(Position position){
-        return new ChessPosition((char) ('a' - position.getColumn()), (8 - position.getRow()));
+        return new ChessPosition((char) ('a' + position.getColumn()), (8 - position.getRow()));
     }
 
     @Override

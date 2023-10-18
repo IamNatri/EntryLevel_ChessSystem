@@ -1,4 +1,4 @@
-package IamNatri.com.github.entrylevel_chessSysten.boardgame;
+package IamNatri.com.github.entrylevel_chessSystem.boardgame;
 
 public class Board {
 
